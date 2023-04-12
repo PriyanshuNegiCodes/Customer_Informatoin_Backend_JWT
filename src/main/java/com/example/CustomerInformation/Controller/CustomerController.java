@@ -26,4 +26,10 @@ public class CustomerController {
    public ResponseEntity<?> addCustomer(@RequestBody Customer customer){
        return new ResponseEntity<>(iCustomerService.addCustomer(customer), HttpStatus.CREATED);
    }
+   @DeleteMapping("/deleteByID")
+    public ResponseEntity<?> deleteCustomer(HttpServletRequest httpServletRequest){
+       String customerName=(String) httpServletRequest.getAttribute("attr1");
+
+       return new ResponseEntity<>(iCustomerService.deleteByCustomerId(customerName), HttpStatus.OK);
+   }
 }

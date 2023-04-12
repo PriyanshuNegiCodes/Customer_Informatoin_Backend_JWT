@@ -10,4 +10,5 @@ public interface ICustomerService {
 
     Customer addCustomer(Customer customer);
     Customer getCustomerById(String customerName);
+    boolean deleteByCustomerId(String customerName);
 }

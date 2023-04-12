@@ -19,4 +19,10 @@ public class CustomerServiceImp implements ICustomerService {
     public Customer getCustomerById(String customerName) {
         return customerRepository.findById(customerName).get();
     }
+
+    @Override
+    public boolean deleteByCustomerId(String customerName) {
+        customerRepository.deleteById(customerName);
+        return true;
+    }
 }
