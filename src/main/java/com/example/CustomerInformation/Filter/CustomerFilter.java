@@ -24,13 +24,14 @@ public class CustomerFilter extends GenericFilterBean {
             throw new ServletException("The token is missing");
         }else {
             String token=authHeader.substring(7);
+            System.out.println("this is token "+token);
             Claims claims= Jwts.parser().setSigningKey("SecretKey").parseClaimsJws(token).getBody();
 
             httpServletRequest.setAttribute("attr1", claims.get("customerName"));
             httpServletRequest.setAttribute("attr2", claims.get("customerPassword"));
 
             System.out.println("*************************************************");
-            System.out.println("This is the attr1 "+claims.get("userEmail")+" This is the attr2 "+claims.get("UserRole"));
+            System.out.println("This is the attr1 "+claims.get("customerName")+" This is the attr2 "+claims.get("customerPassword"));
 
         }
             filterChain.doFilter(httpServletRequest, httpServletResponse);

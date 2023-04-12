@@ -26,12 +26,15 @@ public class CustomerController {
    public ResponseEntity<?> addCustomer(@RequestBody Customer customer){
        return new ResponseEntity<>(iCustomerService.addCustomer(customer), HttpStatus.CREATED);
    }
-   @DeleteMapping("/deleteByID")
+    //http://localhost:5555/api/customer/v1/deleteById
+    @GetMapping("/deleteByID")
     public ResponseEntity<?> deleteCustomer(HttpServletRequest httpServletRequest){
-       String customerName=(String) httpServletRequest.getAttribute("attr1");
-
-       return new ResponseEntity<>(iCustomerService.deleteByCustomerId(customerName), HttpStatus.OK);
-   }
-
+        String customerName=(String) httpServletRequest.getAttribute("attr1");
+        System.out.println("this is the information"+(String) httpServletRequest.getAttribute("attr1"));
+        if (customerName == null) {
+            return new ResponseEntity<>("The customerName is missing", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iCustomerService.deleteByCustomerId(customerName), HttpStatus.OK);
+    }
 
 }

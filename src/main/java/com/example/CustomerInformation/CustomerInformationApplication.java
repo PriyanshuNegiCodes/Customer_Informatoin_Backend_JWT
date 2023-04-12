@@ -13,11 +13,15 @@ public class CustomerInformationApplication {
 		SpringApplication.run(CustomerInformationApplication.class, args);
 	}
 
+
+	//my code
 	@Bean
 	public FilterRegistrationBean filterUrl(){
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean<>();
 		filterRegistrationBean.setFilter(new CustomerFilter());
-		filterRegistrationBean.addUrlPatterns("/api/customer/v1/getUser");
+		filterRegistrationBean.addUrlPatterns("/api/customer/v1/getUser", "/api/customer/v1/deleteByID");
+
+		System.out.println("You reached in main method");
 		return filterRegistrationBean;
 	}
 }
