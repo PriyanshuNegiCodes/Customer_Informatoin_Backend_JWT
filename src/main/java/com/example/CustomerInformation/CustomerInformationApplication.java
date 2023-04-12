@@ -13,8 +13,6 @@ public class CustomerInformationApplication {
 		SpringApplication.run(CustomerInformationApplication.class, args);
 	}
 
-
-	//my code
 	@Bean
 	public FilterRegistrationBean filterUrl(){
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean<>();
